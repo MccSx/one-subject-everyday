@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .circle{
+      width: 100px;
+      height: 100px;
+      background: green;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="circle"></div>
+  <script>
+    let circle = document.querySelector('.circle')
+
+    function moveTo(e) {
+      let x = e.clientX - 50
+      let y = e.clientY - 50
+      let maxX = document.documentElement.clientWidth - 100
+      let maxY = document.documentElement.clientHeight - 100
+      if (x < 0) {
+        x = 0
+      } else if (x > maxX) {
+        x = maxX
+      }
+      if (y < 0) {
+        y = 0
+      } else if (y > maxY) {
+        y = maxY
+      }
+      circle.style.top = `${y}px`
+      circle.style.left = `${x}px`
+    }
+
+    circle.addEventListener('mousedown', () => {
+      document.addEventListener('mousemove', moveTo)
+    })
+    circle.addEventListener('mouseup', () => {
+      document.removeEventListener('mousemove', moveTo)
+    })
+  </script>
+</body>
+</html>
