@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body{width: 100vw; height: 2000px;}
+  </style>
+</head>
+<body>
+  <script>
+    function debounce(fn, time) {
+      let timer
+      return function () {
+        window.clearTimeout(timer)
+        timer = setTimeout(fn, time)
+      }
+    }
+
+    function print() {
+      console.log('print')
+    }
+
+    document.addEventListener('scroll', debounce(print, 300))
+  </script>
+</body>
+</html>
