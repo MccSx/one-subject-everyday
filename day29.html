@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function throttle(fn, time) {
+      let oldTime = Date.now()
+      return function () {
+        if (Date.now() - oldTime > time) {
+          fn()
+          oldTime = Date.now()
+        }
+      }
+    }
+
+    function print() {
+      console.log('print')
+    }
+
+    window.addEventListener('scroll', throttle(print, 100))
+  </script>
+</body>
+</html>
